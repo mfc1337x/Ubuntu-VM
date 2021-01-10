@@ -9,10 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Creating User to Login
-      env:
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-      run: sudo useradd -m $username && sudo adduser $username sudo && echo '$username:$password' | sudo chpasswd
+      run: sudo useradd -m alone && sudo adduser alone sudo && echo 'alone:Alone215' | sudo chpasswd
       
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
@@ -26,9 +23,7 @@ jobs:
       # sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/$username/ && echo xfce4-session >/home/alone/.xsession
       
     - name: Installing Desktop Environment (wait for 5 min)
-      env:
-        username: ${{ secrets.USERNAME }}
-      run: sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/$username/ && echo xfce4-session >/home/alone/.xsession
+      run: sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/alone/ && echo xfce4-session >/home/alone/.xsession
     - name: Installing Xrdp
       run: sudo apt install xrdp -y && sudo service xrdp restart
     - name: Installing Ngrok
